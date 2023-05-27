@@ -39,7 +39,7 @@ void _parsecmd(char *command, char **argv)
 	{
 		if (*token == '#')
 			break;
-		
+
 		argv[argc] = token;
 		token = _strtok(NULL, del);
 		argc++;

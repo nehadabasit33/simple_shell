@@ -76,7 +76,7 @@ void _printenv(void)
 /**
   * _getpath - Finds the path of the input command.
   * @argv: The argument variables.
-  * @dir: The pointer to hold our path.
+  * @command: The input from the user.
   * Return: 0 on success and 1 or -1 otherwise
   */
 char *_getpath(char **argv, char *command)
@@ -92,9 +92,8 @@ char *_getpath(char **argv, char *command)
 
 	tmp = argv[0];
 	if (stat(tmp, &st) == 0)
-	{
 		return (tmp);
-	}
+
 	value = _getenv(variable_name);
 	if (value)
 	{
@@ -114,11 +113,8 @@ char *_getpath(char **argv, char *command)
 				free(dir);
 				return (command);
 			}
-			else
-			{
 				free(dir);
 				token = _strtok(NULL, del);
-			}
 		}
 		free(valuetemp);
 	}
