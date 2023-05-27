@@ -12,7 +12,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	int i = 0;
 	char *command = NULL;
 	size_t len;
-	char *dir = NULL;
 	char *argv[MAX_ARG];
 
 	while (1)
@@ -30,14 +29,12 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 
 			if (i == 0)
 			{
-				command = _getpath(argv, dir);
+				command = _getpath(argv, command);
 				_process(argv, command, av);
 			}
-
-			if (dir != NULL)
-				free(dir);
 		}
 		free(command);
+
 		exit(EXIT_SUCCESS);
 	}
 

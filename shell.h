@@ -20,7 +20,7 @@ int _strncmp(char *str1, char *str2, int len);
 /* functons2.c */
 char *_getenv(char *name);
 int _strcmp(char *str1, char *str2);
-char *_getpath(char **argv, char *dir);
+char *_getpath(char **argv, char *command);
 void _printenv(void);
 int _process(char **argv, char *command, char **av);
 /* functions3.c */

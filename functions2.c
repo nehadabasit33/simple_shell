@@ -79,7 +79,7 @@ void _printenv(void)
   * @dir: The pointer to hold our path.
   * Return: 0 on success and 1 or -1 otherwise
   */
-char *_getpath(char **argv, char *dir)
+char *_getpath(char **argv, char *command)
 {
 	char *variable_name = "PATH";
 	char *value;
@@ -87,6 +87,7 @@ char *_getpath(char **argv, char *dir)
 	char del[] = ":";
 	char *token;
 	struct stat st;
+	char *dir = NULL;
 	char *tmp = NULL;
 
 	tmp = argv[0];
@@ -108,7 +109,10 @@ char *_getpath(char **argv, char *dir)
 			if (stat(dir, &st) == 0)
 			{
 				free(valuetemp);
-				return (dir);
+				free(command);
+				command = _strdup(dir);
+				free(dir);
+				return (command);
 			}
 			else
 			{
